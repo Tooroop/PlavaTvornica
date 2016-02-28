@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PlavaTvornica</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- MainFragment -->
+    <string name="accommodation">Smještaj</string>
+    <string name="accommodation_address">%1$s\n%2$s</string>
+    <!-- End Of MainFragment -->
+</resources>
