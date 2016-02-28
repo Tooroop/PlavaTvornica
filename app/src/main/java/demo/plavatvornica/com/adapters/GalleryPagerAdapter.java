@@ -1,15 +1,13 @@
 package demo.plavatvornica.com.adapters;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import demo.plavatvornica.com.fragments.GalleryItemFragment;
 
 /**
- * Created by Tooroop on 28-Feb-16.
+ * ViewPager adapter for displaying gallery items
  */
 public class GalleryPagerAdapter extends FragmentStatePagerAdapter{
 
@@ -22,6 +20,7 @@ public class GalleryPagerAdapter extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
+        //Return instance of GalleryItemFragment with a certain image displayed
         return GalleryItemFragment.newInstance(gallery[position]);
     }
 

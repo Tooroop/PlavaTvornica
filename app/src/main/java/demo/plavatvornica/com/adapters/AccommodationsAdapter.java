@@ -19,10 +19,13 @@ import demo.plavatvornica.com.R;
 import demo.plavatvornica.com.model.Accommodation;
 
 /**
- * Created by Tooroop on 26-Feb-16.
+ * RecyclerView adapter for Acccommodations list
  */
 public class AccommodationsAdapter extends RecyclerView.Adapter<AccommodationsAdapter.ViewHolder> {
 
+    /**
+     * Interface for listening to Accommodation click
+     */
     public interface AccomodationAdapterListener{
         void onAccomodationClick(Accommodation accommodation);
     }
@@ -46,6 +49,7 @@ public class AccommodationsAdapter extends RecyclerView.Adapter<AccommodationsAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         Accommodation accommodation = accommodations.get(position);
 
+        //Setup RecyclerView row data
         Glide.with(context).load(accommodation.getImagesResources()[0]).into(holder.imgAccommodation);
         holder.txtTitle.setText(accommodation.getTitle());
         holder.txtAddress.setText(context.getString(R.string.accommodation_address, accommodation.getAddress(), accommodation.getPostCode()));
@@ -57,6 +61,9 @@ public class AccommodationsAdapter extends RecyclerView.Adapter<AccommodationsAd
         return accommodations.size();
     }
 
+    /**
+     * ViewHolder for Accommodation model
+     */
     protected class ViewHolder extends RecyclerView.ViewHolder{
 
         @Bind(R.id.imgAccomodation) ImageView imgAccommodation;
@@ -74,6 +81,10 @@ public class AccommodationsAdapter extends RecyclerView.Adapter<AccommodationsAd
         }
     }
 
+    /**
+     * Set listener for listening to AccommodationsAdapter events
+     * @param listener
+     */
     public void setListener(AccomodationAdapterListener listener) {
         this.listener = listener;
     }
