@@ -6,10 +6,15 @@ import demo.plavatvornica.com.R;
 import demo.plavatvornica.com.model.Accommodation;
 
 /**
- * Created by Tooroop on 27-Feb-16.
+ * Helper class for generating demo data
  */
 public class DataHelper {
 
+    /**
+     * Generate demo data
+     *
+     * @return  Array list of accommodations
+     */
     public static ArrayList<Accommodation> getAccommodations(){
         ArrayList<Accommodation> accommodations = new ArrayList<>();
 

@@ -28,6 +28,8 @@ public class DetailFragment extends Fragment{
     public static final String TAG = "DetailFragment";
     public static final String EXTRA_ACCOMMODATION = "EXTRA_ACCOMMODATION";
 
+    //region CLASS VARIABLES
+
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.title) TextView title;
     @Bind(R.id.imgFeatured) ImageView imgFeatured;
@@ -41,6 +43,10 @@ public class DetailFragment extends Fragment{
 
     private Accommodation accommodation;
 
+    //endregion
+
+    //region CLASS CONSTRUCT
+
     public static DetailFragment newInstance(Accommodation accommodation){
         Bundle bundle = new Bundle();
         bundle.putParcelable(EXTRA_ACCOMMODATION, accommodation);
@@ -49,6 +55,8 @@ public class DetailFragment extends Fragment{
         detailFragment.setArguments(bundle);
         return detailFragment;
     }
+
+    //endregion
 
     //region LIFECYCLE METHODS
 
@@ -73,6 +81,7 @@ public class DetailFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Set toolbar and display back button
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -113,6 +122,8 @@ public class DetailFragment extends Fragment{
 
     //endregion
 
+    //region LISTENER METHODS
+
     @OnClick(R.id.imgFirst) void onFirstImageClick(){
         openGallery(0);
 
@@ -126,6 +137,15 @@ public class DetailFragment extends Fragment{
         openGallery(2);
     }
 
+    //endregion
+
+    //region CUSTOM METHODS
+
+    /**
+     * Display GalleryFragment starting with initial position
+     *
+     * @param  position at which to start the viewpager
+     */
     private void openGallery(int position){
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -134,4 +154,6 @@ public class DetailFragment extends Fragment{
         ft.addToBackStack(null);
         ft.commit();
     }
+
+    //endregion
 }

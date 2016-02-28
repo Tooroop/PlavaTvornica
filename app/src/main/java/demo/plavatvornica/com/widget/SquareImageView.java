@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 /**
- * Created by Tooroop on 27-Feb-16.
+ * ImageView whose height equals same as width to be square
  */
 public class SquareImageView extends ImageView {
     public SquareImageView(Context context) {
@@ -30,7 +30,7 @@ public class SquareImageView extends ImageView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
+        //Set height same as width
         setMeasuredDimension(widthMeasureSpec, widthMeasureSpec);
     }
 }

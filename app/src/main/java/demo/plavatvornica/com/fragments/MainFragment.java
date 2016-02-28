@@ -23,19 +23,29 @@ import demo.plavatvornica.com.model.Accommodation;
 import demo.plavatvornica.com.util.DataHelper;
 
 /**
- * Created by Tooroop on 26-Feb-16.
+ * Fragment displaying list of accommodations
  */
 public class MainFragment extends Fragment implements AccommodationsAdapter.AccomodationAdapterListener{
     public static final String TAG = "MainFragment";
+
+    //region CLASS VARIABLES
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.rec_accommodations) RecyclerView recAccommodations;
 
     private ArrayList<Accommodation> accommodations;
 
+    //endregion
+
+    //region CLASS CONSTRUCT
+
     public static MainFragment newInstance() {
         return new MainFragment();
     }
+
+    //endregion
+
+    //region LIFECYCLE METHODS
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,8 +69,10 @@ public class MainFragment extends Fragment implements AccommodationsAdapter.Acco
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Setup toolbar
         ((MainActivity)getActivity()).setSupportActionBar(toolbar);
 
+        //Setup RecyclerView and adapter
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recAccommodations.setLayoutManager(llm);
         recAccommodations.setHasFixedSize(true);
@@ -70,6 +82,15 @@ public class MainFragment extends Fragment implements AccommodationsAdapter.Acco
 
     }
 
+    //endregion
+
+    //region LISTENER METHODS
+
+    /**
+     * Opens detail view of accommodation that was clicked in the RecyclerView
+     *
+     * @param accommodation Accommodation that was clicked
+     */
     @Override
     public void onAccomodationClick(Accommodation accommodation) {
         FragmentManager fm = getFragmentManager();
@@ -79,5 +100,7 @@ public class MainFragment extends Fragment implements AccommodationsAdapter.Acco
         ft.addToBackStack(null);
         ft.commit();
     }
+
+    //endregion
 }
 

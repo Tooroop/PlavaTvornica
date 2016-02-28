@@ -18,17 +18,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import demo.plavatvornica.com.fragments.MainFragment;
 
+/**
+ * Launcher Activity
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set red status bar color for API >= 21
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_dark_red));
         }
         setContentView(R.layout.activity_main);
 
+        //Add MainFragment to view
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         MainFragment mainFragment = MainFragment.newInstance();

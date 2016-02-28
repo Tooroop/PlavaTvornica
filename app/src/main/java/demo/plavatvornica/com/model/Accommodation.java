@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
- * Created by Tooroop on 26-Feb-16.
+ * Accommodation model class
  */
 public class Accommodation implements Parcelable{
 

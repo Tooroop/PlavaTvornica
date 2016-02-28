@@ -20,18 +20,25 @@ import demo.plavatvornica.com.R;
 import demo.plavatvornica.com.adapters.GalleryPagerAdapter;
 
 /**
- * Created by Tooroop on 28-Feb-16.
+ * Fragment displayg Accommodation image gallery
  */
 public class GalleryFragment extends Fragment {
     public static final String TAG = "GalleryFragment";
     public static final String EXTRA_GALLERY = "EXTRA_GALLERY";
     public static final String EXTRA_POSITION = "EXTRA_POSITION";
 
+    //region CLASS VARIABLES
+
     @Bind(R.id.viewPager) ViewPager viewPager;
     @Bind(R.id.indicator) CirclePageIndicator indicator;
 
     private int[] gallery;
     private int position;
+
+    //endregion
+
+
+    //region CLASS CONSTRUCT
 
     public static GalleryFragment newInstance(int[] gallery, int position){
         Bundle bundle = new Bundle();
@@ -42,6 +49,10 @@ public class GalleryFragment extends Fragment {
         galleryFragment.setArguments(bundle);
         return galleryFragment;
     }
+
+    //endregion
+
+    //region LIFECYCLE METHODS
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,9 +76,12 @@ public class GalleryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Setup viewpager and initial position
         GalleryPagerAdapter galleryPagerAdapter = new GalleryPagerAdapter(getChildFragmentManager(), gallery);
         viewPager.setAdapter(galleryPagerAdapter);
         viewPager.setCurrentItem(position);
         indicator.setViewPager(viewPager);
     }
+
+    //endregion
 }

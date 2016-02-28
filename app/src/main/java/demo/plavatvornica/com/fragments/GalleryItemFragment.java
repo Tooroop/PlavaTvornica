@@ -15,14 +15,20 @@ import butterknife.ButterKnife;
 import demo.plavatvornica.com.R;
 
 /**
- * Created by Tooroop on 28-Feb-16.
+ * Fragment representing one gallery item
  */
 public class GalleryItemFragment extends Fragment {
     public static final String EXTRA_IMAGE_RESOURCE = "EXTRA_IMAGE_RESOURCE";
 
+    //region CLASS VARIABLES
+
     @Bind(R.id.accommodationImage) ImageView accommodationImage;
 
     private int imageResource;
+
+    //endregion
+
+    //region CLASS CONSTRUCT
 
     public static GalleryItemFragment newInstance(int imageResource){
         Bundle bundle = new Bundle();
@@ -32,6 +38,10 @@ public class GalleryItemFragment extends Fragment {
         galleryItemFragment.setArguments(bundle);
         return galleryItemFragment;
     }
+
+    //endregion
+
+    //region LIFECYCLE METHODS
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +64,9 @@ public class GalleryItemFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Load gallery image into imageview
         Glide.with(getActivity()).load(imageResource).into(accommodationImage);
     }
+
+    //endregion
 }
